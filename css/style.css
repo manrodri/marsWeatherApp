@@ -1,0 +1,164 @@
+/* font-family: 'Montserrat', sans-serif; */
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    --fw-light: 300;
+    --fw-normal: 400;
+    --fw-semi: 500;
+    --fw-bold: 700;
+    --fs-h1: 1.25rem;
+    --fs-h2: 1.75rem;
+    --fs-body: 1rem;
+    --fs-xl: 4rem;
+    --clr-light: #fff;
+    --clr-gray: #989898;
+    --clr-dark: #444;
+    --clr-accent: #D06D6D;
+    --clr-accent-dark: #613131;
+}
+
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    background-image: url(../img/mars.jpg);
+    background-size: cover;
+    color: var(--clr-light);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+h1,h2,h3 {
+    line-height: 1;
+}
+
+a {
+    color: var(--clr-accent);
+}
+
+a:hover {
+    color: var(--clr-accent-dark);
+}
+
+.main-title {
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-light);
+    text-transform: uppercase;
+    color: var(--clr-accent);
+    letter-spacing: 2px;
+    grid-column: 1 / -1;
+}
+
+.section-title {
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    margin: 0;
+}
+
+.section-title--date {
+    font-size: var(--fs-xl);
+}
+
+.mars-current-weather {
+    background: rgba(0,0,0,.7);
+    padding: 2em;
+    max-width: 1000px;
+    margin: 4em 0 0 4em;
+
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.reading {
+    font-size: var(--fs-h1);
+    margin: 0;
+    color: var(--clr-gray);
+}
+
+.temp {
+    --border: solid .5em var(--clr-accent-dark);
+    grid-column: 2/3;
+    border-left: var(--border);
+    border-right: var(--border);
+    padding: 0 2em;
+}
+
+.wind {
+    grid-column: 3/4;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-self: start;
+
+}
+
+.wind .section-title,
+.wind .reading {
+    grid-column: 2/3;
+}
+
+.wind .section-title {
+    align-self: end;
+}
+
+.wind__direction {
+    --size: 5rem;
+    width: var(--size);
+    height: var(--size);
+    background-color: rgba(255, 255,255,.5);
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
+    grid-row: 1 / span 2;
+}
+
+.wind__arrow {
+/*    update custom props in JS to update the direction */
+    --direction: 0deg;
+    --size: .75rem;
+    height: calc(var(--size)*3);
+    width: var(--size);
+    clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+    background: var(--clr-accent-dark);
+    transform: translateY(-50%) rotate(var(--direction));
+    transform-origin: bottom center;
+    transition: transform 500ms ease;
+
+}
+
+.date {
+    grid-column: 1/2;
+}
+
+.date__day{
+    font-size: var(--fs-h2);
+    margin: 0;
+    color: var(--clr-gray);
+    font-width: var(--fw-light);
+}
+
+.info {
+    grid-column: 1/3;
+}
+
+.unit__toggle {
+grid-column: 3/4;
+}
