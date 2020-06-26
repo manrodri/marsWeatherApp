@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - apt-get update -y
+
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      -  cd web 
+      - aws s3 cp --recursive . s3://${S3_BUCKET}
